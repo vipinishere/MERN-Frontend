@@ -7,28 +7,28 @@ const AllData = () => {
   const [error, setError] = useState('');
 
   async function getData() {
-    const response = await fetch('http://localhost:5000/');
+    const response = await fetch('https://api-mernapp-backend.onrender.com/');
     const result = await response.json();
 
-    if(!response.ok) {
+    if (!response.ok) {
       console.log(error);
       setError(result.error);
     }
-    if(response.ok) {
+    if (response.ok) {
       setData(result);
     }
   }
-  const handleDelete = async (id)=> {
-    const response = await fetch(`http://localhost:5000/${id}`, {
-        method: "DELETE"
+  const handleDelete = async (id) => {
+    const response = await fetch(`https://api-mernapp-backend.onrender.com/${id}`, {
+      method: "DELETE"
     });
 
     const result = await response.json();
 
-    if(!response.ok) {
+    if (!response.ok) {
       setError(result.message)
     }
-    if(response.ok) {
+    if (response.ok) {
       setError("User deleted successfully!");
       getData();
     }
@@ -37,19 +37,18 @@ const AllData = () => {
     }, 1000);
   }
 
-  useEffect(()=> {
+  useEffect(() => {
     getData();
-  },[]);
-
+  }, []);
   return (
     <div className='container my-2'>
-      {error? <Alert error={error} /> : null}
+      {error ? <Alert error={error} /> : null}
       <h2 className="text-center">All Data</h2>
       <div className="row">
         {
-          data?.map((ele)=> {
-            return(
-              <Card key={ele._id} id={ele._id} name={ele.name} email={ele.email} age={ele.age} deleteData={handleDelete}/>
+          data?.map((ele) => {
+            return (
+              <Card key={ele._id} id={ele._id} name={ele.name} email={ele.email} age={ele.age} deleteData={handleDelete} />
             )
           })
         }

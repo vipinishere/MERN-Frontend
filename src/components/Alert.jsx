@@ -1,11 +1,9 @@
-import React from 'react'
-
 const Alert = (props) => {
   return (
     <>
     <div className="alert-placeholder">
-   {props.error && (<div className="alert alert-warning show" role="alert">
-         {props.error}
+   {props.msg && (<div className="alert alert-warning show" role="alert">
+         {props.msg}
     </div>)}
     </div>
     </>
