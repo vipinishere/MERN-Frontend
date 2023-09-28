@@ -34,7 +34,7 @@ const AddData = () => {
       email: "",
       age: ""
     });
-    navigate("/mernapp-frontend");
+    navigate("/");
     try {
       const response = await fetch(url, {
         method: "POST",
