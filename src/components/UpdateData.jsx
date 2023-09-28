@@ -66,7 +66,7 @@ const UpdateData = () => {
     }
     setTimeout(() => {
       setError('');
-      navigate('/');
+      navigate('/mernapp-frontend');
     }, 750);
   };
 
